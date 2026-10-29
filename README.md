@@ -17,3 +17,7 @@ No audio is rehosted. This service is not affiliated with Mixcloud or 8 Ball Rad
 ## Build
 
 Run `node scripts/assemble.mjs`, `bash scripts/build.sh`, then `node scripts/validate-artifact.mjs`. The assembled Worker embeds the catalog; no external dependencies, credentials, schedules, or database are required. Public access must be enabled before a podcast app can fetch the RSS and audio routes.
+
+## Vercel
+
+`vercel.json` adds a Node.js Function adapter for RSS and audio paths. `node scripts/build-vercel.mjs` writes the unchanged generator page to `public/index.html`. The original Sites Worker remains usable. No environment variables are required. Production must be publicly accessible for podcast clients.

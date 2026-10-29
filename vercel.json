@@ -1,0 +1,12 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "node scripts/build-vercel.mjs",
+  "installCommand": "",
+  "outputDirectory": "public",
+  "functions": { "api/index.js": { "maxDuration": 300 } },
+  "rewrites": [
+    { "source": "/feed.xml", "destination": "/api/index?__route=feed.xml" },
+    { "source": "/audio/:slug.m4a", "destination": "/api/index?__route=audio/:slug.m4a" }
+  ]
+}

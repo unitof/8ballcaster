@@ -9,7 +9,8 @@ export default {
 
     // Let subscribers read the destination's migration tag at the old URL.
     if (pathname === '/feed.xml' && ['GET', 'HEAD'].includes(request.method)) {
-      return fetch(destination, { method: request.method, redirect: 'error' });
+      const upstream = await fetch(destination, { method: request.method, redirect: 'manual' });
+      if (upstream.ok) return upstream;
     }
 
     return new Response(null, {
